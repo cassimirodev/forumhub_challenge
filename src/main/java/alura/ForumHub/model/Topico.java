@@ -1,5 +1,7 @@
 package alura.ForumHub.model;
 
+import alura.ForumHub.model.Enums.RoleUser;
+import alura.ForumHub.model.Enums.StatusTopico;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -37,6 +39,10 @@ public class Topico {
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "data_criacao")
     private Instant dataCriacao;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private StatusTopico status;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
